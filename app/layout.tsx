@@ -3,8 +3,7 @@ import type { Metadata } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Preloader } from "@/components/preloader"
+import { ThemeProviderWrapper } from "@/components/theme-provider-wrapper"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -51,10 +50,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${playfair.variable} ${inter.variable} font-inter antialiased`}>
-        <ThemeProvider>
-          <Preloader />
-          {children}
-        </ThemeProvider>
+        <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
         <Analytics />
       </body>
     </html>
